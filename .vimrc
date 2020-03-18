@@ -10,6 +10,9 @@ nnoremap rv :w<CR>:so ~/.vimrc<CR>
 nnoremap <silent> lp :PlugUpdate<CR>
 nnoremap <silent> cp :PlugClean<CR>
 
+" select and copy all texts
+map <C-a> <esc>ggVG"+y
+
 call plug#begin('~/.vim/plugged')
 
 " colerscheme
@@ -29,6 +32,6 @@ if (has("termguicolors"))
 endif
 
 " Indent line config
-let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+let g:indentLine_char_list = ["|", "I"]
 nnoremap <silent> ti :IndentLinesToggle<CR>
 

@@ -2,10 +2,13 @@
 let mapleader = ","
 
 " for running python files
-nnoremap <leader>pm :w<CR>:!python3 main.py<CR>
-nnoremap <leader>p-m :w<CR>:!python3 __main__.py<CR>
-nnoremap <leader>pt :w<CR>:!python3 testing.py<CR>
-nnoremap <leader>pe :w<CR>:!python3 eksample.py<CR>
+let main_python_file="main.py"
+function! RunMainFile()
+	execute "!python3 " . g:main_python_file
+endfunction
+nnoremap <leader>pm :w<CR>:call RunMainFile()<CR>
+nnoremap <leader>psm :let main_python_file=expand("%")<CR>
+
 nnoremap <leader>pc :w<CR>:!python3 %<CR>
 nnoremap <leader>li :w<CR>:!mypy %<CR>
 

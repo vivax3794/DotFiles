@@ -1,8 +1,11 @@
-" was recommended this one
+"I was recommended this one
 let mapleader = ","
 
 " for running python files
 nnoremap <leader>pm :w<CR>:!python3 main.py<CR>
+nnoremap <leader>p-m :w<CR>:!python3 __main__.py<CR>
+nnoremap <leader>pt :w<CR>:!python3 testing.py<CR>
+nnoremap <leader>pe :w<CR>:!python3 eksample.py<CR>
 nnoremap <leader>pc :w<CR>:!python3 %<CR>
 nnoremap <leader>li :w<CR>:!mypy %<CR>
 
@@ -32,7 +35,13 @@ endfunction
 
 nnoremap <silent> <leader>im :call AddImport()<CR>
 
+" toogle file view
 nnoremap <silent> <leader>nt :NERDTreeToggle<CR>
+
+" remove all swap files
+nnoremap <leader>rs :!rm ~/.local/share/nvim/swap/*<CR>
+
+
 
 call plug#begin('~/.vim/plugged')
 

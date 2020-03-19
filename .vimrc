@@ -1,8 +1,9 @@
+" was recommended this one
 let mapleader = ","
 
 " for running python files
-nnoremap <leader>pm :!python3 main.py<CR>
-nnoremap <leader>pc :!python3 %<CR>
+nnoremap <leader>pm :w<CR>:!python3 main.py<CR>
+nnoremap <leader>pc :w<CR>:!python3 %<CR>
 nnoremap <leader>li :w<CR>:!mypy %<CR>
 
 " for edditing .vimrc
@@ -14,7 +15,7 @@ nnoremap <silent> <leader>lp :PlugUpdate<CR>
 nnoremap <silent> <leader>cp :PlugClean<CR>
 
 " select and copy all texts
-map <C-a> <esc>ggVG"+y
+nnoremap  <leader>ya ggVG"+y
 
 " ditraction free writting toogeling
 nnoremap <silent> <leader>df :Goyo<CR>
@@ -22,13 +23,16 @@ nnoremap <silent> <leader>df :Goyo<CR>
 " Toogle indent lines
 nnoremap <silent> <leader>ti :IndentLinesToggle<CR>
 
-
+" function and shortcut to add "import <word under cursor" to the top of the
+" file
 function! AddImport()
 	let module = expand("<cword>")
 	call append(0, "import " . module)
 endfunction
 
 nnoremap <silent> <leader>im :call AddImport()<CR>
+
+nnoremap <silent> <leader>nt :NERDTreeToggle<CR>
 
 call plug#begin('~/.vim/plugged')
 
@@ -50,6 +54,9 @@ Plug 'itchyny/lightline.vim'
 
 " better commenting
 Plug 'preservim/nerdcommenter'
+
+" file manager
+Plug 'preservim/nerdtree'
 
 call plug#end()
 
@@ -76,3 +83,8 @@ set noshowmode
 let g:lightline = {
       \ 'colorscheme': 'nord',
       \ }
+
+" NERD tree config
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif

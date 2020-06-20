@@ -31,6 +31,8 @@ nnoremap <leader>ya ggVG"+y
 xnoremap <leader>yl "+y
 nnoremap <leader>pl "+p
 
+" delete everything
+nnoremap <leader>da ggVGd
 " ditraction free writting toogeling
 nnoremap <silent> <leader>df :Goyo<CR>
 

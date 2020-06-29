@@ -1,4 +1,4 @@
-"I was recommended this one
+" I was recommended this one
 let mapleader = ","
 
 " ignore case

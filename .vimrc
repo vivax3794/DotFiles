@@ -71,17 +71,6 @@ nnoremap <silent> <leader>sf :set nospell<CR>
 nmap ga <Plug>(EasyAlign)
 xmap ga <Plug>(EasyAlign)
 
-" DISALLOW THE ARROWS!
-map <up> <esc>:echoerr "DONT USE ARROWS!"<CR>
-map <down> <esc>:echoerr "DONT USE ARROWS!"<CR>
-map <left> <esc>:echoerr "DONT USE ARROWS!"<CR>
-map <right> <esc>:echoerr "DONT USE ARROWS!"<CR>
-
-imap <up> <esc>:echoerr "DONT USE ARROWS!"<CR>
-imap <down> <esc>:echoerr "DONT USE ARROWS!"<CR>
-imap <left> <esc>:echoerr "DONT USE ARROWS!"<CR>
-imap <right> <esc>:echoerr "DONT USE ARROWS!"<CR>
-
 " windows
 nnoremap <silent> <leader>qw <C-w>w:q<CR>
 nnore <leader>w <C-w>w
@@ -93,7 +82,6 @@ nnoremap <silent> <leader>syf :syntax off<CR>
 autocmd FileType xml syntax on
 
 call plug#begin('~/.vim/plugged')
-
 " colerscheme
 Plug 'kaicataldo/material.vim'
 
@@ -131,8 +119,9 @@ Plug 'easymotion/vim-easymotion'
 " Align stuff
 Plug 'junegunn/vim-easy-align'
 
-" Python autocomplete.
+" autocomplete.
 Plug 'davidhalter/jedi-vim'
+Plug 'racer-rust/vim-racer'
 
 " Linting
 Plug 'vim-syntastic/syntastic'
@@ -142,6 +131,11 @@ Plug 'ripxorip/aerojump.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " Log files
 Plug 'mtdl9/vim-log-highlighting'
+
+" git stuff
+Plug 'tpope/vim-fugitive'
+
+Plug 'elzr/vim-json'
 
 call plug#end()
 
@@ -195,4 +189,6 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-let g:syntastic_python_checkers = ['flake8', "mypy"]
+let g:syntastic_python_checkers = ["flake8", "mypy"]
+
+

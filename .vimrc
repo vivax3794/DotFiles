@@ -14,9 +14,7 @@ nnoremap <leader>psm :let main_python_file=expand("%")<CR>
 autocmd FileType python nnoremap <buffer> <leader>pc :w<CR>:!python3 %<CR>
 
 " for linting python files
-autocmd FileType python nnoremap <buffer> <leader>li :w<CR>:!mypy %<CR>:!flake8 %<CR>
-nnoremap <leader>pt :!python3 -m pytest<CR>
-nnoremap <silent> <leader>tl :SyntasticToggleMode<CR>
+nnoremap <silent> <leader>fl :ALEFix<CR>
 
 " for edditing .vimrc
 nnoremap <silent> <leader>ev :w<CR>:e ~/.vimrc<CR>
@@ -80,6 +78,9 @@ nnoremap <silent> <leader>syf :syntax off<CR>
 
 " some reason I dont have higlithing on xml by deafult
 autocmd FileType xml syntax on
+autocmd FileType haskell syntax enable
+autocmd FileType cabal syntax enable
+autocmd FileType haskell set expandtab
 
 call plug#begin('~/.vim/plugged')
 " colerscheme
@@ -119,13 +120,6 @@ Plug 'easymotion/vim-easymotion'
 " Align stuff
 Plug 'junegunn/vim-easy-align'
 
-" autocomplete.
-Plug 'davidhalter/jedi-vim'
-Plug 'racer-rust/vim-racer'
-
-" Linting
-Plug 'vim-syntastic/syntastic'
-
 " Searching
 Plug 'ripxorip/aerojump.nvim', { 'do': ':UpdateRemotePlugins' }
 
@@ -136,6 +130,13 @@ Plug 'mtdl9/vim-log-highlighting'
 Plug 'tpope/vim-fugitive'
 
 Plug 'elzr/vim-json'
+
+Plug 'dense-analysis/ale'
+
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
+Plug 'deoplete-plugins/deoplete-jedi'
+Plug 'tweekmonster/deoplete-clang2'
 
 call plug#end()
 
@@ -175,20 +176,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " Searching options
 nmap / <Plug>(AerojumpBolt)
 
-" jedi-vim config
-autocmd FileType python setlocal completeopt-=preview
-let g:jedi#show_call_signatures = "2"
-let g:jedi#smart_auto_mappings = 1
+" linting
+let b:ale_fixers = ['black']
 
-" Syntactic plugin
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_python_checkers = ["flake8", "mypy"]
-
-
+let g:deoplete#enable_at_startup = 1

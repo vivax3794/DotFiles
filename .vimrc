@@ -13,6 +13,8 @@ nnoremap <leader>pm :w<CR>:call RunMainFile()<CR>
 nnoremap <leader>psm :let main_python_file=expand("%")<CR>
 autocmd FileType python nnoremap <buffer> <leader>pc :w<CR>:!python3 %<CR>
 
+nnoremap <silent> <leader>di :DetectIndent<CR>
+
 " for linting python files
 nnoremap <silent> <leader>fl :ALEFix<CR>
 
@@ -138,6 +140,9 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'tweekmonster/deoplete-clang2'
 
+Plug 'mattn/emmet-vim/'
+Plug 'ciaranm/detectindent'
+
 call plug#end()
 
 " linenumbers config
@@ -180,3 +185,6 @@ nmap / <Plug>(AerojumpBolt)
 let b:ale_fixers = ['black']
 
 let g:deoplete#enable_at_startup = 1
+
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
